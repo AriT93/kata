@@ -43,4 +43,5 @@ class Karate
       return mid
     end
   end
+
 end
