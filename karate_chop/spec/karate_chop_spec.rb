@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 def t_chop(val, array)
-  return Kc.chop_iteritive(val, array)
+  return Kc.chop_single(val, array)
 end
 describe Karate do
   before(:all) do
