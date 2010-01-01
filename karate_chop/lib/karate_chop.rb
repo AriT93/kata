@@ -44,4 +44,21 @@ class Karate
     end
   end
 
+  def chop_single(val, array)
+    min = 0
+    high = array.length
+    while min < high do
+      mid = min + ((high - min)/2)
+      if array[mid].to_i < val
+        min  = mid + 1
+      else
+        high = mid
+      end
+    end
+    if ((min < array.length) && (array[min] == val))
+      return min
+    else
+      return -1
+    end
+  end
 end
