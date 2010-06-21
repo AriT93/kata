@@ -1,3 +1,4 @@
+# Simple class as part of a kata exercise
 class TriangleNumber
   def initialize
     @letterHash = { }
@@ -40,7 +41,6 @@ class TriangleNumber
 
   def count_words_in_file(file)
     count = 0
-
     File.open(file).each{ |line|
       line.split(",").each { |word|
         if self.is_triangle_word(word.gsub('"',''))
