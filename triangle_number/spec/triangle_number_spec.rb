@@ -35,4 +35,7 @@ describe TriangleNumber do
   it "ski is not a triange word" do
     TN.is_triangle_word("ski").should == false
   end
+  it "should count 162 triangle words in file words.txt" do
+    TN.count_words_in_file("words.txt").should == 162
+  end
 end
