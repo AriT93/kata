@@ -38,4 +38,6 @@ describe TriangleNumber do
   it "should count 162 triangle words in file words.txt" do
     TN.count_words_in_file("words.txt").should == 162
   end
+
+  #comment
 end
