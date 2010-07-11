@@ -7,15 +7,15 @@ sub secret {
     my($self, @secret) = @_;
     if (@secret > 0){
         $self->{secret} = \@secret;
-        return @{$self->{secret}};
+        return $self->{secret};
     }else{
-        return @{$self->{secret}};
+        return $self->{secret};
     }
 }
 sub new(){
     my $class = shift;
     my $self = {};
-    $self->{secret} = undef;
+    $self->{secret} = [];
     bless($self, $class);
     return $self;
 }
@@ -43,9 +43,6 @@ sub guess() {
     for ( $x = 0; $x < $m; $x++) {
         push(@retval,'m');
     }
-
-    print 'm' x $m;
-    print 'p' x $p;
     return @retval;
 }
 sub mark {
