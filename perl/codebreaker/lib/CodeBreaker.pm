@@ -4,21 +4,49 @@ require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 
 sub secret {
-    my($self, $secret) = @_;
-    if (defined($secret)){
-        $self->{_secret} = $secret;
-        return $self->{_secret};
+    my($self, @secret) = @_;
+    if (@secret > 0){
+        $self->{secret} = \@secret;
+        return @{$self->{secret}};
     }else{
-        return $self->{_secret};
+        return @{$self->{secret}};
     }
 }
 sub new(){
     my $class = shift;
-
-    return bless({}, $class);
+    my $self = {};
+    $self->{secret} = undef;
+    bless($self, $class);
+    return $self;
 }
 sub guess() {
-    return [4,0];
+    my ($self, @guess) = @_;
+    my @secret = @{$self->{secret}};
+    my @retval= ();
+    my $m = 0;
+    my $p = 0;
+    my $x;
+    my $count = 0;
+    foreach my $e (@guess){
+         if( grep($e , @secret)){
+             if($secret[$count] eq $e ){
+                 $p++;
+             }else{
+                 $m++;
+              }
+         }
+        $count++;
+    }
+    for ( $x = 0; $x < $p; $x++) {
+        push(@retval,'p');
+    }
+    for ( $x = 0; $x < $m; $x++) {
+        push(@retval,'m');
+    }
+
+    print 'm' x $m;
+    print 'p' x $p;
+    return @retval;
 }
 sub mark {
 
