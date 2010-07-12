@@ -25,10 +25,10 @@ sub guess() {
     my @retval= ();
     my $m = 0;
     my $p = 0;
-    my $x;
+    my $x = 0;
     my $count = 0;
     foreach my $e (@guess){
-         if( grep($e , @secret)){
+         if( grep{/$e/} @secret){
              if($secret[$count] eq $e ){
                  $p++;
              }else{
@@ -42,6 +42,9 @@ sub guess() {
     }
     for ( $x = 0; $x < $m; $x++) {
         push(@retval,'m');
+    }
+    while ( @retval < 4){
+        push(@retval, ' ');
     }
     return @retval;
 }
