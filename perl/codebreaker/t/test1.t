@@ -24,5 +24,9 @@ is_deeply(\@retval,\@twoP);
 is_deeply(\@retval,\@fourM);
 @retval = $cb->guess(qw{c c c c});
 is_deeply(\@retval, \@noMatch);
+@retval = $cb->guess(qw{r g c y});
+@threm1b=qw{p p p};
+push(@threm1b,' ');
+is_deeply(\@retval,\@threm1b);
 
 done_testing();

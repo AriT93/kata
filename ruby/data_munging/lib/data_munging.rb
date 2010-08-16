@@ -1,15 +1,16 @@
+require 'faster_csv'
+
 class DataMunging
+  def parseData(file,headers, col_sep)
+    return FasterCSV.read(file,:headers => headers, :col_sep => col_sep)
+  end
+
   def weather
-    day= { }
-    dat = File.open("/home/abturet/Development/git/kata/data_munging/data/weather.dat")
-    dat.each { |line|
-      ar = line.split(/\s+/)
-      day[ar[0]] = (ar[1].to_i - ar[2].to_i).to_i
-    }
-    dat.sort { |k,v| k[1] <=> v[1]}
-    return day.keys[0].to_s + "," + day.values[0].to_s
+    ar =  parseData("data/weather.dat",false,' ').sort{ |k,v| (k[1].to_i - k[2].to_i) <=> (v[1].to_i - v[2].to_i)}
+    return "#{ar.first[0]},#{ar.first[1].to_i - ar.first[2].to_i}"
   end
 
   def football
+    return parseData("data/football.dat",true,' ').sort{ |k,v| (k[5].to_i - k[6].to_i).abs <=> (v[5].to_i - v[6].to_i).abs}.first[0]
   end
 end
