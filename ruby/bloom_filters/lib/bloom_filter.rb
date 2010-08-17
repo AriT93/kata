@@ -1,4 +1,7 @@
 require 'digest/md5'
+#so far this is stolen from various places on the web to help learning.
+#I still need to do a clean impl on my own
+
 class BloomFilter
 
   def initialize(size, hashses, word_list)
@@ -15,6 +18,8 @@ class BloomFilter
     return true
   end
 end
+
+
 
 class BloomHash
   def initialize(seed, max_value)
