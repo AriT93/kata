@@ -1,6 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-
 describe BloomFilter do
   before (:all) do
     BF = BloomFilter.new(1000000,4,"data/wordlist.txt")
