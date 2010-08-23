@@ -1,5 +1,4 @@
 require 'faster_csv'
-
 class DataMunging
   def parseData(file,headers, col_sep)
     return FasterCSV.read(file,:headers => headers, :col_sep => col_sep)
