@@ -1,76 +1,28 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+# frozen_string_literal: true
 
-def t_chop(val, array)
-  return Kc.chop_single(val, array)
-end
-describe Karate do
-  before(:all) do
-    Kc = Karate.new()
-  end
+RSpec.describe KarateChop do
+  Given(:karate_chop) { KarateChop.new }
 
-  it "will return -1 for an empty array" do
-    t_chop(3,[]).should == -1
-  end
+  Then { karate_chop.chop(3, []) == -1 }
+  Then { karate_chop.chop(3, [1]) == -1 }
+  Then { karate_chop.chop(1, [1]) == 0 }
 
-  it "will return -1 for an array element not found" do
-    t_chop(3,[1]).should == -1
-  end
+  Then { karate_chop.chop(1, [1, 3, 5]) == 0 }
+  Then { karate_chop.chop(3, [1, 3, 5]) == 1 }
+  Then { karate_chop.chop(5, [1, 3, 5]) == 2 }
+  Then { karate_chop.chop(0, [1, 3, 5]) == -1 }
+  Then { karate_chop.chop(2, [1, 3, 5]) == -1 }
+  Then { karate_chop.chop(4, [1, 3, 5]) == -1 }
+  Then { karate_chop.chop(6, [1, 3, 5]) == -1 }
 
-  it "will return 0 for 1 in [1]" do
-    t_chop(1,[1]).should == 0
-  end
+  Then { karate_chop.chop(1, [1, 3, 5, 7]) == 0 }
+  Then { karate_chop.chop(3, [1, 3, 5, 7]) == 1 }
+  Then { karate_chop.chop(5, [1, 3, 5, 7]) == 2 }
+  Then { karate_chop.chop(7, [1, 3, 5, 7]) == 3 }
+  Then { karate_chop.chop(0, [1, 3, 5, 7]) == -1 }
+  Then { karate_chop.chop(2, [1, 3, 5, 7]) == -1 }
+  Then { karate_chop.chop(4, [1, 3, 5, 7]) == -1 }
+  Then { karate_chop.chop(6, [1, 3, 5, 7]) == -1 }
+  Then { karate_chop.chop(8, [1, 3, 5, 7]) == -1 }
 
-  it "will return 0 for 1 in [1,3,5]" do
-    t_chop(1,[1,3,5]).should == 0
-  end
-
-  it "will return 1 for 3 in [1,3,5]" do
-    t_chop(3,[1,3,5]).should == 1
-  end
-
-  it "assert_equal(2,  chop(5, [1, 3, 5]))" do
-    t_chop(5, [1, 3, 5]).should == 2
-  end
-  it "assert_equal(-1, chop(0, [1, 3, 5]))" do
-    t_chop(0, [1, 3, 5]).should == -1
-  end
-
-  it "assert_equal(-1, chop(2, [1, 3, 5]))" do
-    t_chop(2, [1, 3, 5]).should == -1
-  end
-  it " assert_equal(-1, chop(4, [1, 3, 5]))" do
-    t_chop(4, [1, 3, 5]).should == -1
-  end
-
-  it " assert_equal(-1,chop(6, [1, 3, 5]))" do
-    t_chop(6, [1, 3, 5]).should == -1
-  end
-
-  it " assert_equal(0,  chop(1, [1, 3, 5, 7]))" do
-    t_chop(1, [1, 3, 5, 7]).should == 0
-  end
-  it " assert_equal(1,  chop(3, [1, 3, 5, 7]))" do
-    t_chop(3, [1, 3, 5, 7]).should == 1
-  end
-  it " assert_equal(2,  chop(5, [1, 3, 5, 7]))" do
-    t_chop(5, [1, 3, 5, 7]).should == 2
-  end
-  it " assert_equal(3,  chop(7, [1, 3, 5, 7]))" do
-    t_chop(7, [1, 3, 5, 7]).should == 3
-  end
-  it " assert_equal(-1, chop(0, [1, 3, 5, 7]))" do
-    t_chop(0, [1, 3, 5, 7]).should == -1
-  end
-  it " assert_equal(-1, chop(2, [1, 3, 5, 7]))" do
-    t_chop(2, [1, 3, 5, 7]).should == -1
-  end
-  it " assert_equal(-1, chop(4, [1, 3, 5, 7]))" do
-    t_chop(4, [1, 3, 5, 7]).should == -1
-  end
-  it " assert_equal(-1, chop(6, [1, 3, 5, 7]))" do
-    t_chop(6, [1,3,5,7]).should == -1
-  end
-  it " assert_equal(-1, chop(8, [1, 3, 5, 7]))" do
-    t_chop(8, [1, 3, 5, 7]).should == -1
-  end
 end
