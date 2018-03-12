@@ -1,0 +1,9 @@
+source :rubygems
+
+gem 'autotest'
+gem 'rspec'
+gem 'rspec-autotest'
+gem 'rspec-nc'
+gem 'rubocop'
+gem 'ruby-lint'
+gem 'terminal-notifier'

@@ -10,6 +10,7 @@ class BloomFilter
     @bitmap = Array.new(@size)
     @bitmap.fill(0)
 
+
     @hasfunc = block || lambda do |word|
       digest = Digest::MD5.hexdigest(word)
       [h1 =  digest[1,5].to_i(16) % @size -1, h2 = word.hash, word.size ** 2]
