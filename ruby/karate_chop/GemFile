@@ -1,0 +1,14 @@
+source :rubygems
+
+gem 'autotest'
+gem 'fastri'
+gem 'parallel'
+gem 'parser'
+gem 'rcodetools'
+gem 'rspec'
+gem 'rspec-autotest'
+gem 'rspec-given'
+gem 'rspec-nc'
+gem 'rubocop'
+gem 'ruby-lint'
+gem 'terminal-notifier'
